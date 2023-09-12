@@ -8,6 +8,9 @@ This documentation outlines the usage and specifications of the hng-backend-stag
 
 This API doesn't require any authentication.
 
+## UML DESIGN
+- Click on my UML Design - <a href="https://app.diagrams.net/#LHNGPROJECT2.drawio">link</a>
+
 ## Endpoints
 
 ### `GET /id`
