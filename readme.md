@@ -59,36 +59,46 @@ With these steps completed, your project should now be able to connect to the Mo
 
 ## API Endpoints
 
-### Create a New Person
+The API provides the following endpoints for CRUD operations on the "Person" resource:
 
-- **URL:** `/api`
-- **Method:** `POST`
-- **Request Body:**
+- **Create a Person**:
+  - **POST /api/**
+  - Add a new person to the database.
+
+- **Read a Person**:
+  - **GET /api/{name}**
+  - Retrieve details of a person by name.
+
+- **Update a Person**:
+  - **PUT /api/{name}**
+  - Modify details of an existing person by name.
+
+- **Delete a Person**:
+  - **DELETE /api/{name}**
+  - Remove a person from the database by name.
+
+## Request/Response Formats
+
+### Create a Person (POST /api/)
+
+**Request Format:**
 
 ```json
 {
-  "name": "John",
+  "name": "Mathew Okononfua"
 }
+```
 
-**Response status 201 created**
-
-## Update a Person
-
-- **URL:** `/api/:user_id`
-- **Method:** `PUT`
-
-**Request Parameters:**
-
-- `user_id` (string) - The ID of the person to update.
-
-**Request Body:**
+**Response Format (Success - 200):**
 
 ```json
 {
-  "name": "Updated Name"
+  "name": "Mathew Okononfua"
 }
+```
 
-## Fetch a Person
+
+### Read a Person (GET /api/{name})
 
 - **URL:** `/api/:user_id`
 - **Method:** `GET`
@@ -97,18 +107,59 @@ With these steps completed, your project should now be able to connect to the Mo
 
 - `user_id` (string) - The ID of the person to fetch.
 
-**Response:**
-
-- **Status:** 200 OK
-
-**Example Response:**
+**Response Format (Success - 200):**
 
 ```json
 {
   "_id": "2",
   "name": "Josh",
 }
+```
 
+**Response Format (Not Found - 404):**
+
+```json
+{
+  "detail": "Person with name 'Mathew Okononfua' already exists"
+}
+```
+
+
+### Update a Person (PUT /api/{name})
+
+
+- **URL:** `/api/:user_id`
+- **Method:** `PUT`
+
+**Request Format:**
+
+**Request Parameters:**
+
+- `user_id` (string) - The ID of the person to update.
+
+
+**Request Body:**
+
+```json
+{
+  "name": "Updated Name"
+}
+
+**Response Format (Success - 200):**
+
+```json
+{
+  "name": "Mathew Pio"
+}
+```
+
+**Response Format (Not Found - 404):**
+
+```json
+{
+  "detail": "Person with 'Miracle Apata' already exists"
+}
+```
 
 ## Delete a Person
 
@@ -129,7 +180,7 @@ With these steps completed, your project should now be able to connect to the Mo
 {
   "message": "Person deleted successfully"
 }
-
+```
 
 ## Error Handling
 
