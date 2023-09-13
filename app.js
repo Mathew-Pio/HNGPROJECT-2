@@ -1,9 +1,9 @@
 const express = require('express');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const mongoose = require('mongoose');
 const detailsRoutes = require('./routes/details');
 
-const MONGODB_URI = 'mongodb+srv://MathewPio:hngproject@cluster0.dtdulsc.mongodb.net/info?retryWrites=true&w=majority';
+
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(detailsRoutes);
 
 mongoose
   .connect(
-    MONGODB_URI
+    process.env.MONGODB_URI
   )
 .then(result => {
     // Start the server
